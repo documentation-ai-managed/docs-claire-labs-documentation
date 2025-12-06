@@ -1,0 +1,158 @@
+---
+title: Assessment Tools
+description: Comprehensive guide to using Claire Labs AI-powered assessment and feedback tools
+---
+
+## Assessment Tools Overview
+
+Claire Labs provides a suite of AI-powered tools designed to streamline the assessment process for educators. Our tools analyze student work, provide detailed feedback, and generate insights to help teachers identify learning patterns and areas for improvement.
+
+<Columns cols={3}>
+  <Card title="Essay Grader" icon="file-text" href="#essay-grading">
+    Automated essay evaluation with detailed scoring.
+  </Card>
+  <Card title="Feedback Generator" icon="message-square" href="#feedback-tools">
+    AI-generated personalized student feedback.
+  </Card>
+  <Card title="Progress Analytics" icon="bar-chart" href="#analytics">
+    Data-driven insights into student performance.
+  </Card>
+</Columns>
+
+## Essay Grading
+
+Our AI-powered essay grading tool evaluates written assignments based on customizable rubrics.
+
+<Steps>
+  <Step title="Upload Assignment" icon="upload">
+    Submit student essays through our API or dashboard.
+  </Step>
+  <Step title="Configure Rubric" icon="settings">
+    Define grading criteria and weightings.
+  </Step>
+  <Step title="Run Assessment" icon="play">
+    Let AI analyze the content and provide scores.
+  </Step>
+  <Step title="Review Results" icon="eye">
+    Examine detailed feedback and scoring breakdown.
+  </Step>
+</Steps>
+
+<Tabs>
+  <Tab title="API Usage" icon="code">
+    ```javascript
+const result = await claireLabs.assessEssay({
+  content: essayText,
+  rubric: {
+    criteria: [
+      { name: 'Content', weight: 0.4 },
+      { name: 'Grammar', weight: 0.3 },
+      { name: 'Structure', weight: 0.3 }
+    ]
+  }
+});
+
+console.log(`Score: ${result.score}/100`);
+console.log(`Feedback: ${result.feedback}`);
+    ```
+  </Tab>
+  <Tab title="Dashboard" icon="layout-dashboard">
+    Use our web interface to upload essays and view results in real-time.
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">For best results, provide clear rubric criteria and sample essays for AI training.</Callout>
+
+## Feedback Generation
+
+Generate personalized, constructive feedback for students based on their work.
+
+<Expandable title="Feedback Types" default-open="false">
+  - **Strengths**: Positive reinforcement of good work
+  - **Areas for Improvement**: Specific suggestions for growth
+  - **Next Steps**: Actionable recommendations
+  - **Resources**: Links to helpful learning materials
+</Expandable>
+
+<CodeGroup tabs="Python,JavaScript">
+  ```python
+feedback_request = {
+    "student_work": "Essay content here...",
+    "assignment_type": "literature_analysis",
+    "student_level": "high_school",
+    "focus_areas": ["thesis", "evidence", "analysis"]
+}
+
+response = client.generate_feedback(feedback_request)
+print(response["feedback"])
+print(response["score_breakdown"])
+  ```
+  ```javascript
+const feedback = await claireLabs.generateFeedback({
+  studentWork: 'Essay content here...',
+  assignmentType: 'literature_analysis',
+  studentLevel: 'high_school',
+  focusAreas: ['thesis', 'evidence', 'analysis']
+});
+
+console.log(feedback.feedback);
+console.log(feedback.scoreBreakdown);
+  ```
+</CodeGroup>
+
+## Progress Analytics
+
+Track student progress over time with detailed analytics and insights.
+
+| Metric | Description | Frequency |
+|--------|-------------|-----------|
+| Average Score | Overall performance across assignments | Per assignment |
+| Improvement Rate | Growth in specific skill areas | Weekly |
+| Engagement Level | Time spent on learning activities | Daily |
+
+<ExpandableGroup>
+  <Expandable title="Custom Dashboards" default-open="false">
+    Create personalized views of student progress data.
+  </Expandable>
+  <Expandable title="Trend Analysis" default-open="false">
+    Identify patterns in student performance over time.
+  </Expandable>
+  <Expandable title="Comparative Reports" default-open="false">
+    Compare individual student progress against class averages.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="info">Analytics data helps identify students who may need additional support or enrichment.</Callout>
+
+## Integration Options
+
+Claire Labs integrates seamlessly with popular learning management systems.
+
+<Tabs>
+  <Tab title="Canvas" icon="book-open">
+    Direct integration with Canvas LMS for automated grading workflows.
+  </Tab>
+  <Tab title="Google Classroom" icon="file-text">
+    Sync assignments and feedback with Google Classroom.
+  </Tab>
+  <Tab title="Custom API" icon="code">
+    Build custom integrations using our comprehensive API.
+  </Tab>
+</Tabs>
+
+## Best Practices
+
+Maximize the effectiveness of our assessment tools with these guidelines.
+
+- **Calibrate AI Scoring**: Regularly review and adjust AI-generated scores
+- **Provide Context**: Include assignment instructions and learning objectives
+- **Combine AI with Human Judgment**: Use AI as a supplement to teacher expertise
+- **Student Privacy**: Ensure compliance with data protection regulations
+
+<Update label="2024-02-01" description="New Assessment Features" tags={["feature", "improvement"]}>
+## New Capabilities
+
+- Added support for multimedia assignments
+- Enhanced feedback personalization
+- Improved analytics dashboard
+</Update>

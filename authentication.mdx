@@ -1,0 +1,144 @@
+---
+title: Authentication
+description: Learn how to authenticate and securely access Claire Labs API endpoints
+---
+
+## Authentication Overview
+
+Claire Labs uses API key-based authentication to ensure secure access to our assessment and feedback services. This approach provides a simple yet robust method for integrating with our platform while maintaining data privacy and security standards essential for educational environments.
+
+<Callout kind="info">Keep your API keys secure and never share them publicly. Rotate keys regularly for enhanced security.</Callout>
+
+## Obtaining API Keys
+
+To get started with authentication, you'll need to obtain an API key from your Claire Labs dashboard.
+
+<Steps>
+  <Step title="Log In" icon="user">
+    Access your Claire Labs account at the dashboard.
+  </Step>
+  <Step title="Navigate to Settings" icon="settings">
+    Go to the API section in your account settings.
+  </Step>
+  <Step title="Generate Key" icon="key">
+    Create a new API key with appropriate permissions.
+  </Step>
+  <Step title="Copy Key" icon="copy">
+    Securely store the generated key for use in your application.
+  </Step>
+</Steps>
+
+## Using API Keys
+
+Include your API key in the Authorization header for all API requests.
+
+<Tabs>
+  <Tab title="cURL" icon="terminal">
+    ```bash
+curl -X GET \
+  'https://api.clairelabs.com/v1/assessments' \
+  -H 'Authorization: Bearer YOUR_API_KEY_HERE' \
+  -H 'Content-Type: application/json'
+    ```
+  </Tab>
+  <Tab title="JavaScript" icon="code">
+    ```javascript
+const response = await fetch('https://api.clairelabs.com/v1/assessments', {
+  method: 'GET',
+  headers: {
+    'Authorization': `Bearer ${apiKey}`,
+    'Content-Type': 'application/json'
+  }
+});
+
+const data = await response.json();
+    ```
+  </Tab>
+</Tabs>
+
+<Expandable title="Key Management Best Practices" default-open="false">
+  - Store keys securely using environment variables
+  - Use different keys for development and production
+  - Monitor key usage in your dashboard
+  - Rotate keys every 90 days
+</Expandable>
+
+## Permissions and Scopes
+
+API keys can be configured with specific permissions based on your needs.
+
+| Permission | Description | Use Case |
+|------------|-------------|----------|
+| read:assessments | View assessment results | Student dashboards |
+| write:assessments | Create new assessments | Teacher tools |
+| admin:users | Manage user accounts | Institution admins |
+
+<Callout kind="danger">Ensure your API keys have the minimum required permissions to prevent unauthorized access.</Callout>
+
+## Troubleshooting Authentication
+
+Common authentication issues and their solutions.
+
+<ExpandableGroup>
+  <Expandable title="Invalid API Key" default-open="false">
+    Verify the key is correctly copied and hasn't expired. Check for extra spaces or characters.
+  </Expandable>
+  <Expandable title="Insufficient Permissions" default-open="false">
+    Ensure your key has the necessary scopes for the requested operation.
+  </Expandable>
+  <Expandable title="Rate Limiting" default-open="false">
+    Monitor your request frequency and consider upgrading your plan if needed.
+  </Expandable>
+</ExpandableGroup>
+
+<CodeGroup tabs="Node.js,Python">
+  ```javascript
+// Error handling example
+const claireLabs = require('claire-labs-sdk');
+
+try {
+  const client = new claireLabs.Client({
+    apiKey: process.env.CLAIRE_API_KEY
+  });
+  
+  const assessments = await client.listAssessments();
+  console.log('Success:', assessments.length);
+} catch (error) {
+  if (error.code === 'INVALID_API_KEY') {
+    console.error('Please check your API key');
+  } else if (error.code === 'INSUFFICIENT_PERMISSIONS') {
+    console.error('Your key lacks required permissions');
+  }
+}
+  ```
+  ```python
+from claire_labs import Client
+
+try:
+    client = Client(api_key=os.environ['CLAIRE_API_KEY'])
+    assessments = client.list_assessments()
+    print(f'Success: {len(assessments)}')
+except Exception as e:
+    if 'INVALID_API_KEY' in str(e):
+        print('Please check your API key')
+    elif 'INSUFFICIENT_PERMISSIONS' in str(e):
+        print('Your key lacks required permissions')
+  ```
+</CodeGroup>
+
+## Security Considerations
+
+Our authentication system includes several security measures to protect your data.
+
+- **Encryption**: All API communications use HTTPS/TLS 1.3
+- **Token Expiry**: Keys can be set to expire automatically
+- **Audit Logging**: All API access is logged for security monitoring
+- **IP Restrictions**: Optional IP whitelisting for additional security
+
+<Update label="2024-01-15" description="Security Enhancement" tags={["security", "improvement"]}>
+## Security Updates
+
+- Implemented automatic key rotation reminders
+- Added IP-based access controls
+- Enhanced audit logging for compliance
+</Update>

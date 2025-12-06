@@ -1,0 +1,112 @@
+---
+title: Introduction
+description: Overview of Claire Labs and its AI-powered tools for educational assessment and feedback
+---
+
+## Getting Started with Claire Labs
+
+Claire Labs develops human-centric, responsible AI tools designed to assist educators with assessment and feedback processes. Our platform leverages advanced machine learning to provide intelligent insights, automate grading workflows, and enhance student learning outcomes. Whether you're a classroom teacher, educational institution, or assessment administrator, Claire Labs empowers you to focus on teaching while our AI handles the analytical heavy lifting.
+
+<Columns cols={3}>
+  <Card title="Assessment Tools" icon="file-text" href="assessment-tools">
+    Explore our AI-powered assessment capabilities that streamline grading and provide detailed feedback.
+  </Card>
+  <Card title="Authentication" icon="key" href="authentication">
+    Learn how to securely authenticate and integrate with our API.
+  </Card>
+  <Card title="Best Practices" icon="check-circle" href="best-practices">
+    Discover guidelines for effectively implementing Claire Labs in educational environments.
+  </Card>
+</Columns>
+
+## Core Features
+
+Our platform offers a comprehensive suite of features tailored for educational assessment:
+
+- **Automated Grading**: AI-driven analysis of student submissions with detailed scoring rubrics
+- **Feedback Generation**: Contextual, personalized feedback for students based on their work
+- **Progress Tracking**: Real-time insights into student performance and learning trends
+- **Integration Ready**: Seamless connection with existing learning management systems
+
+<Tabs>
+  <Tab title="Teachers" icon="user">
+    Educators can quickly assess assignments, generate feedback, and identify areas where students need additional support.
+  </Tab>
+  <Tab title="Institutions" icon="users">
+    Schools and universities benefit from scalable assessment solutions that maintain consistency across courses.
+  </Tab>
+</Tabs>
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Create your account at Claire Labs and choose your plan.
+  </Step>
+  <Step title="Connect" icon="plug">
+    Integrate with your existing educational platform.
+  </Step>
+  <Step title="Assess" icon="file-text">
+    Start using AI-powered assessment tools immediately.
+  </Step>
+</Steps>
+
+<Callout kind="info">For optimal results, we recommend starting with a pilot program in one classroom before full implementation.</Callout>
+
+<Expandable title="Frequently Asked Questions" default-open="false">
+  <Expandable title="Is Claire Labs secure for student data?" default-open="false">
+    Yes, we adhere to strict data privacy standards including FERPA compliance and encryption at rest and in transit.
+  </Expandable>
+  <Expandable title="What types of assessments are supported?" default-open="false">
+    Our platform supports essays, multiple-choice tests, coding assignments, and multimedia submissions.
+  </Expandable>
+</Expandable>
+
+<ExpandableGroup>
+  <Expandable title="Technical Requirements" default-open="false">
+    Claire Labs requires a modern web browser and internet connection. No additional software installation needed.
+  </Expandable>
+  <Expandable title="Pricing Information" default-open="false">
+    We offer flexible pricing tiers based on usage volume. Contact our sales team for customized quotes.
+  </Expandable>
+</ExpandableGroup>
+
+| Feature | Free Tier | Pro Tier | Enterprise |
+|---------|-----------|----------|------------|
+| Assessments/Month | 100 | 1000 | Unlimited |
+| AI Feedback | Basic | Advanced | Custom |
+| API Access | No | Yes | Full |
+
+## Getting Help
+
+Our comprehensive documentation covers everything from basic setup to advanced integrations. For additional support, visit our help center or contact our support team.
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+// Quick start example
+const claireLabs = require('claire-labs-sdk');
+
+const client = new claireLabs.Client({
+  apiKey: 'your-api-key-here'
+});
+
+// Assess a student submission
+const result = await client.assess({
+  content: 'Student essay text...',
+  rubric: 'essay-rubric-1'
+});
+
+console.log(result.score, result.feedback);
+  ```
+  ```python
+from claire_labs import Client
+
+client = Client(api_key='your-api-key-here')
+
+# Assess submission
+result = client.assess(
+    content='Student essay text...',
+    rubric='essay-rubric-1'
+)
+
+print(result.score, result.feedback)
+  ```
+</CodeGroup>
